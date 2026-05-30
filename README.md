@@ -1,56 +1,93 @@
-# CV Management and Analysis System (Python CLI Project)
+# CV Management & Analysis System (Python CLI)
 
-## 📌 Project Description
-This is a Python-based command-line application that allows users to create, manage, analyze, and store multiple CVs.
+This is a Python-based command-line CV management system that allows users to create, update, analyze, and store multiple CVs using JSON storage.
 
-The system supports adding education, work experience, and skills, and provides an automatic CV scoring and analysis feature.
-
-Data is stored locally using JSON files, and the system supports multiple CV management with update and selection functionality.
+The system is designed for learning purposes and demonstrates core Python concepts such as OOP, file handling, decorators, and generators.
 
 ---
 
-## ⚙️ Features
+## Features
 
 - Create multiple CVs
+- Load and update existing CVs (no duplication)
 - Add education, experience, and skills
-- CV scoring and analysis system
-- Skill sorting using lambda function
-- Experience display using generator
-- Save and load CVs using JSON file
-- Update existing CV instead of duplicating
-- Logging system using decorator
+- Automatic CV scoring and analysis system
+- Skill sorting using lambda functions
+- Experience iteration using generators
+- JSON-based persistent storage
+- Logging system using decorators
+- Input validation and custom exceptions
 
 ---
 
-## 🧠 Technologies & Python Concepts Used
+## Technologies Used
 
+- Python 3
 - Object-Oriented Programming (OOP)
-- Functions and lambda expressions
-- Custom decorators (logging system)
-- Generators (experience iterator)
-- List comprehensions
-- File handling (with open)
-- JSON serialization
-- Exception handling (custom exceptions)
-- Control structures (if, for, while)
-- CLI menu system
-
+- JSON file handling
+- Lambda functions
+- Generators
+- Decorators
+- Exception handling
+- CLI (Command Line Interface)
 
 ---
 
-## 🚀 How to Run
+## Project Structure
 
-### 1. Install Python (3.8+ recommended)
+```
+project/
+│
+├── main.py
+│
+├── models/
+│   └── cv.py
+│
+├── services/
+│   ├── analyzer.py
+│   └── file_handler.py
+│
+├── utils/
+│   ├── decorators.py
+│   ├── exceptions.py
+│   └── validators.py
+│
+├── data/
+│   └── cv.json
+│
+└── log.txt
+```
 
-### 2. Run the project
+---
 
+## Installation
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/Cinarss/cv_system.git
+```
+
+### 2. Go to project directory
+```bash
+cd cv-management-system
+```
+
+### 3. Run the application
 ```bash
 python main.py
-💾 Data Storage
-All CV data is stored in cv.json
-Logs are stored in log.txt
-JSON structure supports multiple CVs with unique IDs
-🧪 Example Usage
+```
+
+---
+
+## Usage
+
+Run the program and use the menu:
+
+```
+====================
+CV SYSTEM
+====================
+
 1. Create CV
 2. Add Education
 3. Add Experience
@@ -58,29 +95,50 @@ JSON structure supports multiple CVs with unique IDs
 5. Analyze CV
 6. Save CV
 7. Load CV
-📊 CV Analysis System
+0. Exit
+```
 
-The system calculates a CV score based on:
+---
 
-Name existence
-Email validation
-Education entries
-Work experience
-Number of skills
+## CV Analysis
 
-It also lists missing sections to improve CV quality.
+The system automatically evaluates CVs based on:
 
-📝 Notes
-This project is designed for educational purposes.
-JSON is used instead of a database for simplicity.
-Logging is implemented using a Python decorator.
-The system supports multiple CV management with update functionality.
-👨‍💻 Author
+- Name completeness
+- Email validation
+- Education entries
+- Work experience
+- Skills count
 
-Created as a Python final project demonstrating OOP, file handling, and core language features.
+It also provides:
+- CV score
+- Missing sections
+- Sorted skill list
 
-📌 Future Improvements
-Add database support (SQLite/PostgreSQL)
-Add GUI (Tkinter or web interface)
-Add CV export to PDF
-Add search/filter system for CVs
+---
+
+## Data Storage
+
+- CV data is stored in `data/cv.json`
+- Logs are stored in `log.txt`
+- Supports multiple CVs using unique IDs
+
+---
+
+## Notes
+
+- This project is for educational purposes
+- No database is used (JSON instead)
+- Focus is on Python fundamentals and clean structure
+
+---
+
+## Future Improvements
+
+- Add database support (SQLite / PostgreSQL)
+- Add web interface (Flask / Django)
+- Export CV as PDF
+- Add search and filtering system
+- Add authentication system
+
+---
