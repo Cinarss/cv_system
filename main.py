@@ -13,10 +13,18 @@ def create_cv():
     global current_cv
 
     name = input("Name: ")
-    email = input("Email: ")
 
-    if not validate_email(email):
-        raise InvalidEmailError("Invalid email format!")
+    while True:
+        email = input("Email (or type 'exit' to cancel): ")
+
+        if email.lower() == "exit":
+            print("CV creation cancelled.")
+            return
+
+        if validate_email(email):
+            break
+
+        print("Invalid email format! please try again or type 'exit'.")
 
     current_cv = CV(name, email)
     current_cv.id = None
@@ -65,12 +73,15 @@ def analyze():
     print("\n===== CV ANALYSIS =====")
     print("Score:", result["score"])
     print("Missing:", result["missing"])
+    if result["suggestions"]:
+        print("Suggestions:")
+        for suggestion in result["suggestions"]:
+            print("-", suggestion)
     print("Skills sorted:", sorted_skills)
     print("Skills list (comprehension):", skills_list)
     print("\nExperiences (generator):")
     for exp in experience_generator(current_cv.experience):
         print(exp)
-
 
 
 def save():
@@ -144,12 +155,16 @@ def load():
 
     print("CV loaded!")
 
-
 def menu():
     while True:
-        print("""
+        if current_cv is None:
+            current_name = "No CV Loaded"
+        else:
+            current_name = current_cv.name
+        print(f"""
 ====================
 CV SYSTEM
+Current CV: {current_name}
 ====================
 1. Create CV
 2. Add Education
@@ -179,7 +194,14 @@ CV SYSTEM
             elif choice == "7":
                 load()
             elif choice == "0":
-                break
+                print("Do not forget to save your CV before exiting!")
+                confirm = input("Are you sure you want to exit? (y/n): ")
+                if confirm.lower() == "y":
+                    break
+                else:
+                    print("Returning to menu...")
+            else:
+                print("Invalid option!")
         except Exception as e:
             print("Error:", e)
 

@@ -2,6 +2,7 @@ def analyze_cv(cv):
 
     score = 0
     missing = []
+    suggestions = []
 
     if cv.name:
         score += 10
@@ -19,18 +20,22 @@ def analyze_cv(cv):
         missing.append("Education")
 
     if len(cv.experience) > 0:
-        score += 25
+        score += 30
     else:
         missing.append("Experience")
 
-    if len(cv.skills) >= 3:
+    if len(cv.skills) >= 5:
+        score += 30
+    elif len(cv.skills) >= 3:
         score += 20
+        suggestions.append("Add more skills (5+ recommended)")
     else:
-        missing.append("Skills (min 3 recommended)")
+        missing.append("Skills (minimum 3 recommended)")
 
     return {
         "score": score,
-        "missing": missing
+        "missing": missing,
+        "suggestions": suggestions
     }
 
 def sort_skills(skills):

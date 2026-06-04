@@ -1,0 +1,28 @@
+{
+    "cvs": [
+        {
+            "name": "cinar",
+            "email": "cianr@gmail.com",
+            "education": [
+                {
+                    "school": "pjatk",
+                    "degree": "cs"
+                }
+            ],
+            "experience": [
+                {
+                    "company": "sadsa",
+                    "position": "asdas"
+                }
+            ],
+            "skills": [
+                "asdas",
+                "asdasd",
+                "asdad",
+                "asdasdasd",
+                "asdasdad"
+            ],
+            "id": 1
+        }
+    ]
+}
